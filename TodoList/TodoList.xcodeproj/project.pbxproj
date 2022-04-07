@@ -77,7 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				B3BAE2BD27FEBBDE005E7ED2 /* URLManager.swift */,
-				B3BAE29827FE793B005E7ED2 /* Model */,
+				B3BAE29927FE7957005E7ED2 /* Card.swift */,
+				B3BAE29B27FE7C21005E7ED2 /* Board.swift */,
 				D299330F27FC063E00D79C87 /* ViewController */,
 				D299331027FC064C00D79C87 /* View */,
 				B39BFEB327FADA8700B28376 /* AppDelegate.swift */,
@@ -88,15 +89,6 @@
 				B39BFEC127FADA8E00B28376 /* Info.plist */,
 			);
 			path = TodoList;
-			sourceTree = "<group>";
-		};
-		B3BAE29827FE793B005E7ED2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B3BAE29927FE7957005E7ED2 /* Card.swift */,
-				B3BAE29B27FE7C21005E7ED2 /* Board.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D299330F27FC063E00D79C87 /* ViewController */ = {
