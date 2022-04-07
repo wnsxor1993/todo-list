@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+
+class Board{
+//    private var cards: [Card]?
+    private var todoCards: [Card]?
+    private var doginCards: [Card]?
+    private var doneCards: [Card]?
+    
+    
+    
+    
+}
