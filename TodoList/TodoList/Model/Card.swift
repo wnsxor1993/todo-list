@@ -9,12 +9,12 @@ import Foundation
 
 
 struct Card: Codable{
-    private var id: Int
-    private var section: State
-    private var title: String
-    private var content: String
-    private var createdDate: Date
-    private var author: String
+    private(set) var id: Int
+    private(set) var section: State
+    private(set) var title: String
+    private(set) var content: String
+    private(set) var createdDate: Date
+    private(set) var userID: String
     
     enum State: String, Codable{
         case todo
@@ -28,7 +28,7 @@ struct Card: Codable{
         case title
         case content
         case createdDate = "created_at"
-        case author
+        case userID = "userId"
         
     }
     

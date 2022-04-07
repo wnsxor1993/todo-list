@@ -20,17 +20,14 @@ class URLManager{
         }
     }
     
-    
     static func requestGet(url: String) -> [Card]?{
         guard let validURL = URL(string: url) else { return nil}
         var urlRequest = URLRequest(url: validURL)
         var decodeData: [Card]?
         
         urlRequest.httpMethod = HttpMethod.get.getRawValue()
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            
+        URLSession.shared.dataTask(with: urlRequest){ data, response, error in
             guard let data = data else { return }
-            
             do {
                 guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
                     return
@@ -41,10 +38,33 @@ class URLManager{
                 return
             }
         }
-        
         return decodeData
-
     }
     
+    // 인코딩된 데이터로 Post // Card id 응답
+    static func requestPost(url: String, requestParam: Card) -> Int?{
+        var requestedID: Int?
+        let paramData = [requestParam.title, requestParam.content, requestParam.userID]
+        
+        guard let uploadData = try? JSONEncoder().encode(paramData) else { return nil }
+        
+        guard let validURL = URL(string: url) else { return nil }
+        var urlRequest = URLRequest(url: validURL)
+        urlRequest.httpMethod = HttpMethod.post.getRawValue()
+        
+        URLSession.shared.uploadTask(with: urlRequest, from: uploadData){ data, response, error in
+            guard let data = data else { return }
+            do {
+                guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
+                    return
+                }
+                let decoder = try JSONDecoder().decode(Int.self,from: data)
+                requestedID = decoder
+            } catch{
+                return
+            }
+        }
+        return requestedID
+    }
 }
 
