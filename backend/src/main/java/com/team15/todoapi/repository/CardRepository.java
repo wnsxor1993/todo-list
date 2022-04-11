@@ -4,5 +4,6 @@ import com.team15.todoapi.domain.Card;
 import java.util.List;
 
 public interface CardRepository {
-	public List<Card> findAll();
+	List<Card> findAll();
+	Card insert(Card card);
 }

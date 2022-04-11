@@ -2,6 +2,7 @@ package com.team15.todoapi.domain;
 
 import java.time.LocalDateTime;
 
+
 public class Card {
 
 	private Long id;
@@ -11,15 +12,31 @@ public class Card {
 	private LocalDateTime created_at;
 	private LocalDateTime modified_at;
 	private boolean delete_flag;
-	private int section;
+	private int cardSectionCodeId;
 
-	public Card(String title, String content) {
+	public Card(){};
+
+	public Card(Long id, String title, String content, Long member_id,
+		LocalDateTime created_at, LocalDateTime modified_at, boolean delete_flag, int cardSectionCodeId) {
+		this.id = id;
 		this.title = title;
 		this.content = content;
-		this.created_at = LocalDateTime.now();
-		this.modified_at = LocalDateTime.now();
+		this.member_id = member_id;
+		this.created_at = created_at;
+		this.modified_at = modified_at;
+		this.delete_flag = delete_flag;
+		this.cardSectionCodeId = cardSectionCodeId;
+	}
+
+	public Card(String title, String content, Long member_id, int cardSectionCodeId) {
+		LocalDateTime now = LocalDateTime.now();
+		this.title = title;
+		this.content = content;
+		this.member_id = member_id;
+		this.created_at = now;
+		this.modified_at = now;
 		this.delete_flag = false;
-		this.section = 1;
+		this.cardSectionCodeId = cardSectionCodeId;
 	}
 
 	public Long getId() {
@@ -50,7 +67,7 @@ public class Card {
 		return delete_flag;
 	}
 
-	public int getSection() {
-		return section;
+	public int getCardSectionCodeId() {
+		return cardSectionCodeId;
 	}
 }
